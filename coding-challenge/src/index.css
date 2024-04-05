@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("./fonts/Montserrat-Medium.ttf") format("truetype");
+  /* Adjust the path to the font file accordingly */
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  font-family: "Montserrat-Medium";
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-container {
+  margin-top: 100px;
+  width: 40%;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 8px;
+}
+
+.input-and-button {
+  width: 30%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-and-button button {
+  font-family: "Montserrat-Medium";
+}
+
+.search-button {
+  margin-left: 35px;
+}
+
+input[type="text"] {
+  font-family: "Montserrat-Medium";
+}
+
+input {
+  font-size: 20px;
+  height: 50px;
+  width: 300px;
+}
+
+.list-heading {
+  display: flex;
+  padding: 10px;
+}
+
+.page-container img {
+  border-radius: 50%;
+}
+
+.name-text {
+  font-weight: bold;
+}
+
+.revenue-text {
+  color: #4e616b;
+}
+
+.revenue-text,
+.name-text {
+  padding-left: 30px;
+}
+
+.list-heading-text {
+  font-size: 20px;
+  text-align: center;
+}
+.member-list {
+  list-style: none;
+}
+
+.name-and-text {
+  display: flex;
+  align-items: center;
+}
+.name-and-text img{
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+.left img {
+  width: 40%;
+}
+
+.xcircle {
+  width: 5%;
+  filter: invert(72%) sepia(22%) saturate(149%) hue-rotate(155deg)
+    brightness(92%) contrast(86%);
+}
+
+.left,
+.right {
+  flex: 1;
+}
+
+.member-list li {
+  padding: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.member-list li:not(:last-child) {
+  border-bottom: 1px solid #cccccc38;
+  border-width: 80%;
+}
+
+/* NAV BAR CSS */
+.nav-bar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.text-dropdowns {
+  display: flex;
+  align-items: center;
+}
+
+.text-dropdowns p {
+  font-size: 17px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.logo-img {
+  padding-right: 20px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.get-started {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
