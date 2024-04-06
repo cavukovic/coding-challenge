@@ -162,7 +162,21 @@ input {
 }
 
 .get-started {
+  margin-right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+ 
+}
+
+.get-started button{
+  font-family: "Montserrat-Medium";
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(to right, #4a44d6, #15a9bc);
+  height: 50px;
+  width: 120px;
 }
