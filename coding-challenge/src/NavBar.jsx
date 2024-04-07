@@ -3,6 +3,7 @@ import logo from "./assets/krikey-logo.png";
 import chevronDown from "./assets/chevron-down.svg";
 
 const NavBar = () => {
+  // just the frontend done, no functionality implemented
   return (
     <div className="nav-bar-container">
       <div className="nav-bar">

@@ -1,7 +1,7 @@
+/* CSS for the web application  */
 @font-face {
   font-family: "Montserrat-Medium";
   src: url("./fonts/Montserrat-Medium.ttf") format("truetype");
-  /* Adjust the path to the font file accordingly */
   font-weight: normal;
   font-style: normal;
 }
@@ -146,7 +146,7 @@ input {
 .text-dropdowns p {
   font-size: 17px;
   padding: 10px;
-  padding-left: 20px;
+  padding-left: 30px;
   padding-right: 10px;
 }
 

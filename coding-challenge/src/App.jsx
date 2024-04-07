@@ -13,37 +13,44 @@ const App = () => {
   };
 
   const clearAuthors = () => {
+    // clearing the authors will effectively hide the list
     setTopAuthors([]);
     setError("");
-    console.log("clear authors");
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
   };
 
   const handleSearch = () => {
     const currentURL = window.location.href;
-    if (currentURL == "http://localhost:5173/") {
+    if (currentURL !== "http://localhost:5173/") {
       console.log("currentURL:", currentURL);
-      // Make an HTTP GET request to the server endpoint
+      // make an HTTP GET request to the server endpoint
       fetch(`http://localhost:5174/top-authors?author_name=${authorName}`)
         .then((response) => {
-          // Check if the response is successful (status code 2xx)
           if (!response.ok) {
             throw new Error("Failed to fetch top authors");
           }
-          // Parse the JSON response
           return response.json();
         })
         .then((data) => {
-          // Update the state with the fetched top authors
+          // update the state with the top authors
           setTopAuthors(data);
           setError("");
         })
         .catch((error) => {
-          // Handle any errors that occur during the fetch operation
+          // handle any errors that occur during the fetch operation
           console.error("Error fetching top authors:", error);
           setError("Failed to fetch top authors");
           setTopAuthors([]);
         });
     } else {
+      // If the website is not being hosted locally (i.e. on Netlify) then we
+      // just use the dummy data since Netlify doesn't allow hosting the backend
+      // and I didn't want to pay for backend hosting.
       const dummyData = [
         { name: "Alice Johnson", total_revenue: 106.5 },
         { name: "Matthew Hernandez", total_revenue: 99.75 },
@@ -56,8 +63,24 @@ const App = () => {
         { name: "Daniel Rodriguez", total_revenue: 43 },
         { name: "Amanda Gonzalez", total_revenue: 40 },
       ];
-      setTopAuthors(dummyData);
-      setError("");
+
+      if (authorName !== "") {
+        if (
+          dummyData.find(
+            (author) =>
+              author.name.toLocaleLowerCase() === authorName.toLocaleLowerCase()
+          )
+        ) {
+          setTopAuthors(dummyData);
+          setError("");
+        } else {
+          console.error(`Error, the author ${authorName} does not exist`);
+          setError("Failed to find author");
+        }
+      } else {
+        setTopAuthors(dummyData);
+        setError("");
+      }
     }
   };
 
@@ -72,6 +95,7 @@ const App = () => {
               placeholder="Enter team members name"
               value={authorName}
               onChange={handleAuthorNameChange}
+              onKeyUp={handleKeyPress}
             />
             <button className="search-button" onClick={handleSearch}>
               Search
@@ -79,6 +103,7 @@ const App = () => {
           </div>
         )}
         {error && <div>{error}</div>}
+        {/* Display the authors list if there are any topAuthors  */}
         {topAuthors.length > 0 && (
           <div className="list-container">
             <div className="list-heading">
@@ -92,6 +117,7 @@ const App = () => {
               {topAuthors.map((author, index) => (
                 <li key={index}>
                   <div className="name-and-text">
+                    {/* Random placeholder image */}
                     <img
                       height="60px"
                       width="60px"

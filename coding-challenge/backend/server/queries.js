@@ -1,5 +1,6 @@
 const db = require("../data/db");
 
+// Clear the DB
 async function clearDatabase() {
   try {
     await db.exec(`
@@ -15,6 +16,7 @@ async function clearDatabase() {
   }
 }
 
+// Create the tables 
 async function createTables() {
   db.exec(`
             CREATE TABLE IF NOT EXISTS authors (
@@ -104,53 +106,8 @@ async function fillDummyData() {
   }
 }
 
-async function getTopAuthors() {
-  //   db.all("SELECT * FROM authors", (error, rows) => {
-  //     rows.forEach((row) => console.log(`${row.name}`));
-  //   });
-  try {
-    const result =
-      await db.all(`SELECT a.name, SUM(si.item_price * si.quantity) AS total_revenue
-          FROM authors a
-          JOIN books b ON a.id = b.author_id
-          JOIN sale_items si ON b.id = si.book_id
-          GROUP BY a.name
-          ORDER BY total_revenue DESC
-          LIMIT 10;`);
-    return result;
-  } catch (error) {
-    console.error("Error fetching top authors:", error);
-    throw error;
-  }
-}
-
-async function queryDummyData() {
-  try {
-    const result = await db.all(`
-        SELECT * FROM authors;
-      `);
-    console.log("Query result:");
-    console.log(result);
-    return result;
-  } catch (error) {
-    console.error("Error querying dummy data:", error);
-    throw error;
-  }
-}
-
-function getAuthorByName(authorName) {
-  return db.oneOrNone("SELECT * FROM authors WHERE name = $1", authorName);
-}
-
-function selectAuthors() {
-  return db.all(`SELECT * FROM authors`);
-}
-
 module.exports = {
   clearDatabase,
   createTables,
   fillDummyData,
-  selectAuthors,
-  getTopAuthors,
-  getAuthorByName,
 };
