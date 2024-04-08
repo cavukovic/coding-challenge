@@ -44,7 +44,7 @@ const App = () => {
         .catch((error) => {
           // handle any errors that occur during the fetch operation
           console.error("Error fetching top authors:", error);
-          setError("Failed to fetch top authors");
+          setError("Failed to fetch team members");
           setTopAuthors([]);
         });
     } else {
@@ -75,7 +75,7 @@ const App = () => {
           setError("");
         } else {
           console.error(`Error, the author ${authorName} does not exist`);
-          setError("Failed to find author");
+          setError("Failed to find team member");
         }
       } else {
         setTopAuthors(dummyData);
