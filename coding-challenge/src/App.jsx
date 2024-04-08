@@ -26,7 +26,7 @@ const App = () => {
 
   const handleSearch = () => {
     const currentURL = window.location.href;
-    if (currentURL !== "http://localhost:5173/") {
+    if (currentURL == "http://localhost:5173/") {
       console.log("currentURL:", currentURL);
       // make an HTTP GET request to the server endpoint
       fetch(`http://localhost:5174/top-authors?author_name=${authorName}`)
